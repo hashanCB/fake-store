@@ -1,6 +1,18 @@
-import React from "react";
-
+"use client";
+import React, { useState } from "react";
+import SideNavbar from "./SideNavbar";
 const Navbar = () => {
+  const [openbar, setOpenbar] = useState(false);
+
+  const [navbardownsheet, setnavbardownsheet] = useState(false);
+
+  const isoopenbar = () => {
+    setOpenbar(!openbar);
+  };
+
+  const navbardown = () => {
+    setnavbardownsheet(!navbardownsheet);
+  };
   return (
     <div>
       <nav class="flex items-center justify-between flex-wrap bg-white p-6 shadow-xl">
@@ -27,9 +39,13 @@ const Navbar = () => {
           </svg>
         </div>
         <div class="block lg:hidden">
-          <button class="flex items-center px-3 py-2 border rounded text-teal-200 border-teal-400 hover:text-white hover:border-white">
+          <button
+            class="flex items-center px-3 py-2 border rounded text-teal-200 border-black  hover:shadow-lg"
+            onClick={isoopenbar}
+          >
+            {openbar ? <SideNavbar openbar={isoopenbar} /> : null}
             <svg
-              class="fill-current h-3 w-3"
+              class="fill-current h-3 w-3 text-black"
               viewBox="0 0 20 20"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -38,7 +54,7 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        <div class="w-full block flex-grow lg:flex lg:items-center   lg:w-auto">
+        <div class=" hidden w-full block flex-grow lg:flex lg:items-center   lg:w-auto">
           <div class="text-sm lg:flex-grow  lg:text-center text-[#334155] text-[15px]">
             <a
               href="#responsive-header"
@@ -55,6 +71,7 @@ const Navbar = () => {
             <a
               href="#responsive-header"
               class="block mt-4 lg:inline-block lg:mt-0   py-3 px-6 hover:bg-[#334155]/10 hover:rounded-full"
+              onClick={navbardown}
             >
               Beauty
             </a>
@@ -67,13 +84,81 @@ const Navbar = () => {
             </a>
           </div>
           <div>
-            <a
-              href="#"
-              class="block mt-4 lg:inline-block lg:mt-0   py-3 px-6 hover:bg-[#334155]/10 hover:rounded-full"
-            ></a>
+            <div>
+              <div className=" flex">
+                <div>
+                  <a
+                    href="#"
+                    class="block mt-4 lg:inline-block lg:mt-0   p-2 hover:bg-[#334155]/10 hover:rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href="#"
+                    class="block mt-4 lg:inline-block lg:mt-0   p-2 hover:bg-[#334155]/10 hover:rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+
+                <div>
+                  <a
+                    href="#"
+                    class="block mt-4 lg:inline-block lg:mt-0   p-2 hover:bg-[#334155]/10 hover:rounded-full"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={1.5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z"
+                      />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </nav>
+      {navbardownsheet ? (
+        <div className=" w-full bg-orange-600 h-[400px] transition-transform duration-500"></div>
+      ) : null}
     </div>
   );
 };
